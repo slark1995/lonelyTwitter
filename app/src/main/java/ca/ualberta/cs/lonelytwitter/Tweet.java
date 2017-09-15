@@ -2,11 +2,9 @@ package ca.ualberta.cs.lonelytwitter;
 
 import java.util.Date;
 
-/**
- * Created by taijie on 9/14/17.
- */
 
-public class Tweet {
+
+public  abstract class Tweet implements Tweetable {
     private String message;
     private Date date;
 
@@ -44,7 +42,7 @@ public class Tweet {
         return message;
     }
 
-
+public abstract Boolean isImportant();
 
 
 }

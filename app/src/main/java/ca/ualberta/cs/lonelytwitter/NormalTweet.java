@@ -6,7 +6,7 @@ import java.util.Date;
  * Created by taijie on 9/14/17.
  */
 
-public class NormalTweet extends Tweet {
+public class NormalTweet implements Tweetable {
     private NormalTweet(String message){
         super(message);
     }
@@ -16,6 +16,8 @@ public class NormalTweet extends Tweet {
     }
 
     @Override
-    public Boolean is
+    public Boolean isImportant(){
+        return Boolean.FALSE;
+    }
 
 }
