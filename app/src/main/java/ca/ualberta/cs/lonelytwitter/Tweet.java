@@ -1,9 +1,26 @@
+/*
+ *Class Name: Tweet
+ *
+ * Version: Version 1.0
+ *
+ * Date :September 28, 2017
+ *
+ * Copyright(c) Team X, CMPUT University of Alberta - All Rights Reserved. You may use, distribute, or modify this code under terms and conditions of the Code of Students Behavior at University Of Alberta
+ */
+
+
 package ca.ualberta.cs.lonelytwitter;
 
 import java.util.Date;
 
 /**
- * Created by watts1 on 9/12/17.
+ * Represents a Tweet
+ *
+ * @author taijie
+ * @version 1.0
+ * @see NormalTweet
+ * @see ImportantTweet
+ * @since 1.0
  */
 
 public abstract class Tweet {
@@ -16,6 +33,13 @@ public abstract class Tweet {
         this.date = new Date();
     }
 
+    /**
+     * Constructs Tweet objects
+     * @param message tweet message
+     * @param date tweet date
+     */
+
+
     public Tweet(String message, Date date) {
         this.message = message;
         this.date = date;
@@ -23,7 +47,12 @@ public abstract class Tweet {
 
     public abstract Boolean isImportant();
 
-
+    /**
+     * Sets tweet messages
+     *
+     * @param message
+     * @throws TweetTooLongException
+     */
 
 
 
@@ -35,19 +64,43 @@ public abstract class Tweet {
         }
     }
 
+    /**
+     * Gets message
+     *
+     * @return string
+     */
+
     public String getMessage(){
         return this.message;
     }
+
+    /**
+     * Gets date
+     *
+     * @return Date
+     */
 
     public Date getDate() {
         return date;
     }
 
+    /**
+     * Sets date
+     *
+     * @param date
+     */
+
     public void setDate(Date date) {
         this.date = date;
     }
 
+
+    /**
+     *
+     * @return String
+     */
     @Override
+
     public String toString() {
         return date.toString() + " | " + message;
     }
