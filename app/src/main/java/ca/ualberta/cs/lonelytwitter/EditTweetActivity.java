@@ -12,8 +12,9 @@ public class EditTweetActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_tweet);
-        text= (TextView) findViewById(R.id.textView);
         Intent intent = getIntent();
+
+        text= (TextView) findViewById(R.id.textView);
         string = intent.getStringExtra("Test Tweet!");
         text.setText(string);
 

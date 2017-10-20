@@ -1,18 +1,6 @@
 package ca.ualberta.cs.lonelytwitter;
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.Date;
-
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -25,6 +13,16 @@ import android.widget.ListView;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+
 public class LonelyTwitterActivity extends Activity {
 
 	private static final String FILENAME = "file.sav";
@@ -32,6 +30,7 @@ public class LonelyTwitterActivity extends Activity {
 	private ListView oldTweetsList;
 	private ArrayList<Tweet> tweetList = new ArrayList<Tweet>();
 	private ArrayAdapter<Tweet> adapter;
+
 	private LonelyTwitterActivity activity = this;
 
 	public ListView getOldTweetsList(){
@@ -60,7 +59,6 @@ public class LonelyTwitterActivity extends Activity {
 			}
 		});
 
-
 		clearButton.setOnClickListener(new View.OnClickListener() {
 
 			public void onClick(View v) {
@@ -68,19 +66,19 @@ public class LonelyTwitterActivity extends Activity {
 				tweetList.clear();
 				deleteFile(FILENAME);
 				adapter.notifyDataSetChanged();
-				saveInFile();
 			}
 		});
 
-		oldTweetsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+		oldTweetsList.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+				Tweet selectedTweet = (Tweet) oldTweetsList.getItemAtPosition(position);
+				String tweet_message = selectedTweet.getMessage();
 				Intent intent = new Intent(activity, EditTweetActivity.class);
-				intent.putExtra("Test Tweet!",tweetList.get(position).toString());
+				intent.putExtra("Test Tweet!", tweet_message);
 				startActivity(intent);
 			}
 		});
-
-
 	}
 
 	@Override
